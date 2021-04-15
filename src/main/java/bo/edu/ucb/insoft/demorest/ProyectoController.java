@@ -71,20 +71,21 @@ public class ProyectoController {
         }
         return result;
     }
-
+    /*
     @PostMapping(path = "/persona")
-    public Proyecto createPersona(@RequestBody Proyecto persona) {
+    public Proyecto createPersona(@RequestBody Proyecto proyecto) {
         try {
             Connection conn = dataSource.getConnection();
             Statement stmt = conn.createStatement();
             stmt.execute("INSERT INTO persona VALUES ("
-                    + persona.proyecto_id +", '"
-                    + persona.nombre +"', '"+ persona.descripcion+"') ");
+                    + proyecto.proyecto_id +", '"
+                    + proyecto.nombre +"', '"+ persona.descripcion+"') ");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         return persona;
     }
+    */
     // Completar los metodos UPDATE y DELETE
 
     //UPDATE

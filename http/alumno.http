@@ -1,0 +1,21 @@
+###
+
+GET http://localhost:8080/persona/2
+
+###
+GET http://localhost:8080/persona/10
+
+###
+GET http://localhost:8080/persona
+
+###
+POST http://localhost:8080/persona
+Content-Type: application/json
+Accept: application/json
+
+{
+   "personaId": 9,
+   "nombre": "Gabriel",
+   "apellido": "Murillo"
+}
+

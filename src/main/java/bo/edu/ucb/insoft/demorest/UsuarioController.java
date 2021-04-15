@@ -94,8 +94,8 @@ public class UsuarioController {
         return usuario;
     }
     //DELETE
-    @GetMapping(path = "/persona/{personaId}")
-    public Usuario deletePersonaById( @PathVariable Integer usuarioId) {
+    @GetMapping(path = "/usuario/{usuarioId}")
+    public Usuario deleteUsuarioById( @PathVariable Integer usuarioId) {
         Usuario result = new Usuario();
 
         try {

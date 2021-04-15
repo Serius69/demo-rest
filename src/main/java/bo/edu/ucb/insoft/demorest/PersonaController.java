@@ -24,8 +24,8 @@ public class PersonaController {
         try {
             Connection conn = dataSource.getConnection();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT persona_id, nombre, apellido FROM persona" +
-                    "  WHERE persona_id = " + personaId);  //FIXME SQL INJECTION !!!!!
+            ResultSet rs = stmt.executeQuery("SELECT id_persona, nombre, apellido_paterno FROM persona" +
+                    "  WHERE id_persona = " + personaId);  //FIXME SQL INJECTION !!!!!
             if (rs.next()) {
                 result.personaId = rs.getInt("persona_id");
                 result.nombre = rs.getString("nombre");
@@ -50,7 +50,7 @@ public class PersonaController {
         try {
             Connection conn = dataSource.getConnection();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT persona_id, nombre, apellido_paterno, apellido_materno,apellido_casado, telefono, fecha_nacimiento, id_direccion, cooreo_electronico " +
+            ResultSet rs = stmt.executeQuery("SELECT id_persona, nombre, apellido_paterno, apellido_materno,apellido_casado, telefono, fecha_nacimiento, id_direccion, correo_electronico " +
                     "FROM persona");
             while (rs.next()) {
                 Persona persona = new Persona();

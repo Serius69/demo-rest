@@ -19,25 +19,25 @@ public class ProyectoController {
     public DataSource dataSource;
 
     @GetMapping(path = "/proyecto/{proyectoId}")
-    public Proyecto findPersonaById( @PathVariable Integer personaId) {
+    public Proyecto findProyectoById( @PathVariable Integer proyectoId) {
         Proyecto result = new Proyecto();
 
         try {
             Connection conn = dataSource.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT persona_id, nombre, apellido FROM persona" +
-                    "  WHERE persona_id = " + personaId);  //FIXME SQL INJECTION !!!!!
+                    "  WHERE id_proyecto = " + proyectoId);  //FIXME SQL INJECTION !!!!!
             if (rs.next()) {
-                result.proyecto_id = rs.getInt("id_proyecto");
+                result.proyectoId = rs.getInt("id_proyecto");
                 result.nombre = rs.getString("nombre");
                 result.descripcion = rs.getString("descripcion");
-                result.monto_recaudar = rs.getInt("monto_recaudar");
-                result.fecha_inicio_id = rs.getInt("id_fecha_inicio");
-                result.fecha_final_id = rs.getInt("id_fecha_final");
-                result.emprendedor_id = rs.getInt("persona_id");
-                result.hora_inicio = rs.getInt("nombre");
-                result.hora_fin = rs.getInt("apellido");
-                result.estado_id = rs.getInt("apellido");
+                result.montoRecaudar = rs.getInt("monto_recaudar");
+                result.fechaInicioId = rs.getInt("id_fecha_inicio");
+                result.fechaFinalId = rs.getInt("id_fecha_final");
+                result.emprendedorId = rs.getInt("persona_id");
+                result.horaInicio = rs.getInt("nombre");
+                result.horaFin = rs.getInt("apellido");
+                result.estadoId = rs.getInt("apellido");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -55,16 +55,16 @@ public class ProyectoController {
             ResultSet rs = stmt.executeQuery("SELECT id_proyecto, nombre, descripcion FROM proyecto");
             while (rs.next()) {
                 Proyecto proyecto = new Proyecto();
-                proyecto.proyecto_id = rs.getInt("persona_id");
+                proyecto.proyectoId = rs.getInt("persona_id");
                 proyecto.nombre = rs.getString("nombre");
                 proyecto.descripcion = rs.getString("apellido");
-                proyecto.monto_recaudar = rs.getInt("persona_id");
-                proyecto.fecha_inicio_id = rs.getInt("nombre");
-                proyecto.fecha_final_id = rs.getInt("apellido");
-                proyecto.emprendedor_id = rs.getInt("persona_id");
-                proyecto.hora_inicio = rs.getInt("nombre");
-                proyecto.hora_fin = rs.getInt("apellido");
-                proyecto.estado_id = rs.getInt("apellido");
+                proyecto.montoRecaudar = rs.getInt("persona_id");
+                proyecto.fechaInicioId = rs.getInt("nombre");
+                proyecto.fechaFinalId = rs.getInt("apellido");
+                proyecto.emprendedorId = rs.getInt("persona_id");
+                proyecto.horaInicio = rs.getInt("nombre");
+                proyecto.horaFin = rs.getInt("apellido");
+                proyecto.estadoId = rs.getInt("apellido");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -84,5 +84,28 @@ public class ProyectoController {
             ex.printStackTrace();
         }
         return persona;
+    }
+    // Completar los metodos UPDATE y DELETE
+
+    //UPDATE
+
+
+    //DELETE
+    @GetMapping(path = "/persona/{personaId}")
+    public Persona deletePersonaById( @PathVariable Integer personaId) {
+        Persona result = new Persona();
+
+        try {
+            Connection conn = dataSource.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("DELETE * FROM persona" +
+                    "  WHERE persona_id = " + personaId);  //FIXME SQL INJECTION !!!!!
+            if (rs.next()) {
+                result.personaId = rs.getInt("persona_id");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return result;
     }
 }

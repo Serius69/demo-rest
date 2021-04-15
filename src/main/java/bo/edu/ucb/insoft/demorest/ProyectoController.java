@@ -37,6 +37,7 @@ public class ProyectoController {
                 result.emprendedor_id = rs.getInt("persona_id");
                 result.hora_inicio = rs.getInt("nombre");
                 result.hora_fin = rs.getInt("apellido");
+                result.estado_id = rs.getInt("apellido");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -63,6 +64,7 @@ public class ProyectoController {
                 proyecto.emprendedor_id = rs.getInt("persona_id");
                 proyecto.hora_inicio = rs.getInt("nombre");
                 proyecto.hora_fin = rs.getInt("apellido");
+                proyecto.estado_id = rs.getInt("apellido");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -77,7 +79,7 @@ public class ProyectoController {
             Statement stmt = conn.createStatement();
             stmt.execute("INSERT INTO persona VALUES ("
                     + persona.proyecto_id +", '"
-                    + persona.nombre +"', '"+ persona.apellido+"') ");
+                    + persona.nombre +"', '"+ persona.descripcion+"') ");
         } catch (Exception ex) {
             ex.printStackTrace();
         }

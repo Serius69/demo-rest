@@ -1,14 +1,24 @@
-###
+### Mostrar el usuario 2
+GET http://localhost:8080/usuario/2
 
-GET http://localhost:8080/persona/2
+### Mostrar el usuario 10
+GET http://localhost:8080/usuario/10
+
+### Mostrar toda la tabla
+GET http://localhost:8080/usuario
 
 ###
-GET http://localhost:8080/persona/10
+#POST http://localhost:8080/persona
+#Content-Type: application/json
+#Accept: application/json
 
-###
-GET http://localhost:8080/persona
+#{
+#   "personaId": 9,
+#   "nombre": "Gabriel",
+#   "apellido": "Murillo"
+#}
 
-###
+###UPDATE
 POST http://localhost:8080/persona
 Content-Type: application/json
 Accept: application/json
@@ -17,5 +27,5 @@ Accept: application/json
    "personaId": 9,
    "nombre": "Gabriel",
    "apellido": "Murillo"
-}
 
+}

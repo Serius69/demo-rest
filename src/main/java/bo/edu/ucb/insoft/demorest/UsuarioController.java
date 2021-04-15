@@ -21,18 +21,17 @@ public class UsuarioController {
     @GetMapping(path = "/usuario/{usuarioId}")
     public Usuario findUsuarioById( @PathVariable Integer usuarioId) {
         Usuario result = new Usuario();
-
         try {
             Connection conn = dataSource.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT id_usuario, id_tipo_usuario, usuario,contrasena " +
                     "   FROM usuario" +
-                    "   WHERE id_proyecto = " + usuarioId);  //FIXME SQL INJECTION !!!!!
+                    "   WHERE id_usuario = " + usuarioId);  //FIXME SQL INJECTION !!!!!
             if (rs.next()) {
-                result.usuarioId = rs.getInt("id_proyecto");
-                result.tipoUsuarioId = rs.getString("nombre");
-                result.usuario = rs.getString("descripcion");
-                result.contrasena = rs.getString("monto_recaudar");
+                result.usuarioId = rs.getInt("id_usuario");
+                result.tipoUsuarioId = rs.getString("id_tipo_usuario");
+                result.usuario = rs.getString("usuario");
+                result.contrasena = rs.getString("contrasena");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -78,7 +77,7 @@ public class UsuarioController {
     }
     // Completar los metodos UPDATE y DELETE
 
-    //UPDATE
+    //actualizar tabla usuario
     @PostMapping(path = "/usuario")
     public Usuario updateUsuario(@RequestBody Usuario usuario) {
         try {
@@ -87,8 +86,8 @@ public class UsuarioController {
             stmt.execute("UPDATE INTO usuario " +
                     " SET id_tipo_usuario = " + usuario.tipoUsuarioId +","
                     + "usuario = " + usuario.usuario +","
-                    + "contrasena = " + usuario.contrasena +""
-                    + "WHERE id_proyecto = " + usuario.usuarioId);
+                    + "contrasena = " + usuario.contrasena +" "
+                    + "WHERE id_usuario = " + usuario.usuarioId);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

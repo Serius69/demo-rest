@@ -7,25 +7,28 @@ GET http://localhost:8080/usuario/10
 ### Mostrar toda la tabla
 GET http://localhost:8080/usuario
 
-###
-#POST http://localhost:8080/persona
-#Content-Type: application/json
-#Accept: application/json
-
-#{
-#   "personaId": 9,
-#   "nombre": "Gabriel",
-#   "apellido": "Murillo"
-#}
-
-###UPDATE
-POST http://localhost:8080/persona
+### Crear una nueva fila en la tabla
+POST http://localhost:8080/usuario
 Content-Type: application/json
 Accept: application/json
 
 {
-   "personaId": 9,
-   "nombre": "Gabriel",
-   "apellido": "Murillo"
-
+  "usuarioId": 9,
+  "tipoUsuarioId": "1",
+  "usuario": "usuario9",
+  "contrasena": 6754281
 }
+
+### Actualizar tabla usuario
+PUT http://localhost:8080/usuario
+Content-Type: application/json
+Accept: application/json
+
+{
+   "usuarioId": 9,
+   "tipoUsuarioId": "1",
+   "usuario": "usuario9",
+   "contrasena": 6754281
+}
+###
+DELETE http://localhost:8080/usuario/{id_usuario}

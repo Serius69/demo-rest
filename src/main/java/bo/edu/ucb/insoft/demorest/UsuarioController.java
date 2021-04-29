@@ -26,7 +26,7 @@ public class UsuarioController {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT id_usuario, id_tipo_usuario, usuario,contrasena " +
                     "   FROM usuario" +
-                    "   WHERE id_usuario = " + usuarioId);  //FIXME SQL INJECTION !!!!!
+                    "   WHERE id_usuario = " + usuarioId);
             if (rs.next()) {
                 result.usuarioId = rs.getInt("id_usuario");
                 result.tipoUsuarioId = rs.getString("id_tipo_usuario");
@@ -102,7 +102,7 @@ public class UsuarioController {
             Connection conn = dataSource.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("DELETE * FROM usuario" +
-                    "  WHERE id_usuario = " + usuarioId);  //FIXME SQL INJECTION !!!!!
+                    "  WHERE id_usuario = " + usuarioId);
             if (rs.next()) {
                 result.usuarioId = rs.getInt("persona_id");
             }

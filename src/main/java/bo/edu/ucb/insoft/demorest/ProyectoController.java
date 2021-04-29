@@ -26,7 +26,7 @@ public class ProyectoController {
             Connection conn = dataSource.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT persona_id, nombre, apellido FROM persona" +
-                    "  WHERE id_proyecto = " + proyectoId);  //FIXME SQL INJECTION !!!!!
+                    "  WHERE id_proyecto = " + proyectoId);
             if (rs.next()) {
                 result.proyectoId = rs.getInt("id_proyecto");
                 result.nombre = rs.getString("nombre");
@@ -100,7 +100,7 @@ public class ProyectoController {
             Connection conn = dataSource.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("DELETE * FROM persona" +
-                    "  WHERE persona_id = " + personaId);  //FIXME SQL INJECTION !!!!!
+                    "  WHERE persona_id = " + personaId);
             if (rs.next()) {
                 result.personaId = rs.getInt("persona_id");
             }

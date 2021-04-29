@@ -25,7 +25,7 @@ public class PersonaController {
             Connection conn = dataSource.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT id_persona, nombre, apellido_paterno FROM persona" +
-                    "  WHERE id_persona = " + personaId);  //FIXME SQL INJECTION !!!!!
+                    "  WHERE id_persona = " + personaId);
             if (rs.next()) {
                 result.personaId = rs.getInt("persona_id");
                 result.nombre = rs.getString("nombre");
@@ -106,7 +106,7 @@ public class PersonaController {
             Connection conn = dataSource.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("DELETE * FROM persona" +
-                    "  WHERE persona_id = " + personaId);  //FIXME SQL INJECTION !!!!!
+                    "  WHERE persona_id = " + personaId);
             if (rs.next()) {
                 result.personaId = rs.getInt("persona_id");
                 }

@@ -1,14 +1,11 @@
 ###
-GET http://localhost:8080/usuario/2
+GET http://localhost:8087/usuario/10
 
 ###
-GET http://localhost:8080/usuario/10
+GET http://localhost:8081/usuario
 
 ###
-GET http://localhost:8080/usuario
-
-###
-POST http://localhost:8080/usuario
+POST http://localhost:8081/usuario
 Content-Type: application/json
 Accept: application/json
 
@@ -20,7 +17,7 @@ Accept: application/json
 }
 
 ###
-PUT http://localhost:8080/usuario
+PUT http://localhost:8081/usuario
 Content-Type: application/json
 Accept: application/json
 
@@ -31,4 +28,4 @@ Accept: application/json
    "contrasena": 6754281
 }
 ###
-DELETE http://localhost:8080/usuario/{id_usuario}
+DELETE http://localhost:8081/usuario/{id_usuario}

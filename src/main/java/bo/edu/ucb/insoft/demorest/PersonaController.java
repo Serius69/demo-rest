@@ -16,32 +16,46 @@ public class PersonaController {
     @Autowired
     public DataSource dataSource;
 
-    //SEARCH
-    @GetMapping(path = "/persona/{personaId}")
-    public Persona findPersonaById( @PathVariable Integer personaId) {
-        Persona result = new Persona();
 
+    //SEARCH BY NAME
+    @GetMapping(path = "/persona/{nombrepersona}")
+    public Persona findPersonaByName( @PathVariable String personaNombre) {
+        Persona result = new Persona();
         try {
             Connection conn = dataSource.getConnection();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT id_persona, nombre, apellido_paterno FROM persona" +
-                    "  WHERE id_persona = " + personaId);
+            ResultSet rs = stmt.executeQuery("SELECT nombres FROM persona" +
+                    "  WHERE nombres = " + personaNombre);
             if (rs.next()) {
-                result.personaId = rs.getInt("persona_id");
-                result.nombre = rs.getString("nombre");
-                result.apellidoPaterno = rs.getString("apellido");
-                result.apellidoMaterno = rs.getString("persona_id");
-                result.apellidoCasado = rs.getString("nombre");
-                result.telefono = rs.getInt("apellido");
-                result.fechaNacimiento = rs.getString("persona_id");
-                result.direccionId = rs.getString("nombre");
-                result.correoElectronico = rs.getString("apellido");
+                result.nombre = rs.getString("nombres");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         return result;
     }
+
+    //SEARCH
+    @GetMapping(path = "/persona/{personaid}")
+    public Persona findPersonaById( @PathVariable Integer personaId) {
+        Persona result = new Persona();
+
+        try {
+            Connection conn = dataSource.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT id,nombres FROM persona" +
+                    "  WHERE id = " + personaId);
+            if (rs.next()) {
+                result.nombre = rs.getString("nombres");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return result;
+    }
+
+
+    /*
     //listado
     @GetMapping(path = "/persona")
     public List<Persona> findAllPersonas() {
@@ -50,8 +64,10 @@ public class PersonaController {
         try {
             Connection conn = dataSource.getConnection();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT id_persona, nombre, apellido_paterno, apellido_materno,apellido_casado, telefono, fecha_nacimiento, id_direccion, correo_electronico " +
-                    "FROM persona");
+            ResultSet rs = stmt.executeQuery("SELECT id, nombres FROM persona");
+
+            //ResultSet rs = stmt.executeQuery("SELECT id, nombres, apellidos, fe,apellido_casado, telefono, fecha_nacimiento, id_direccion, correo_electronico " +
+            //        "FROM persona");
             while (rs.next()) {
                 Persona persona = new Persona();
                 persona.personaId = rs.getInt("id_persona");
@@ -98,6 +114,7 @@ public class PersonaController {
 
 
     //DELETE
+    /*
     @GetMapping(path = "/persona/{personaId}")
     public Persona deletePersonaById( @PathVariable Integer personaId) {
         Persona result = new Persona();
@@ -114,6 +131,6 @@ public class PersonaController {
             ex.printStackTrace();
         }
         return result;
-    }
+    }*/
 
 }

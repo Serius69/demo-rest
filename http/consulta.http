@@ -1,31 +1,3 @@
 ###
-GET http://localhost:8087/usuario/10
+GET http://localhost:8080/hello
 
-###
-GET http://localhost:8081/usuario
-
-###
-POST http://localhost:8081/usuario
-Content-Type: application/json
-Accept: application/json
-
-{
-  "usuarioId": 9,
-  "tipoUsuarioId": "1",
-  "usuario": "usuario9",
-  "contrasena": 6754281
-}
-
-###
-PUT http://localhost:8081/usuario
-Content-Type: application/json
-Accept: application/json
-
-{
-   "usuarioId": 9,
-   "tipoUsuarioId": "1",
-   "usuario": "usuario9",
-   "contrasena": 6754281
-}
-###
-DELETE http://localhost:8081/usuario/{id_usuario}

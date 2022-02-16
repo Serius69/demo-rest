@@ -45,7 +45,7 @@ public class ProyectoController {
         return result;
     }
 
-    @GetMapping(path = "/persona")
+    @GetMapping(path = "/proyecto")
     public List<Proyecto> findAllPersonas() {
         List<Proyecto> result = new ArrayList<>();
 
@@ -92,7 +92,7 @@ public class ProyectoController {
 
 
     //DELETE
-    @GetMapping(path = "/persona/{personaId}")
+    @GetMapping(path = "/proyecto/{proyect_id}")
     public Persona deletePersonaById( @PathVariable Integer personaId) {
         Persona result = new Persona();
 
@@ -100,9 +100,9 @@ public class ProyectoController {
             Connection conn = dataSource.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("DELETE * FROM persona" +
-                    "  WHERE persona_id = " + personaId);
+                    "  WHERE proyect_id = " + personaId);
             if (rs.next()) {
-                result.personaId = rs.getInt("persona_id");
+               // result.personaId = rs.getInt("persona_id");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
